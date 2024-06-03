@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Tilt+Prism&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    /* sets all the font family as Poppins */
+}
+
+body {
+    min-height: 100vh;
+    /* minimum height is 100vh(vertical height) */
+    display: flex;
+    justify-content: center;
+    /* brings the content horizentally center */
+    align-items: center;
+    /* brings the content vertically center */
+    background-color: #080c34;
+}
+
+/* wrapper css started */
+.wrapper {
+    display: flex;
+}
+
+.wrapper .static-txt {
+    color: #fff;
+    font-size: 60px;
+    font-weight: 400;
+}
+
+.wrapper .dynamic-txts {
+    margin-left: 15px;
+    /* gap between static text and dynamic text */
+    line-height: 90px;
+    /* will set the overall the height of the text container */
+    height: 90px;
+    /* will set the height of the one text */
+    overflow: hidden;
+    /* all word will be hidden since we set that our text height will be 90px and rest of the text are overflowing */
+}
+
+.dynamic-txts li{
+    color: #ff4c29;
+    list-style: none;
+    font-size: 60px;
+    font-weight: 500;
+    position: relative;
+    /* need to be declare because we are style after and after need to be move around his parent */
+    top: 0;
+    animation: slide 12s steps(3) infinite;
+    /* 12s will set how fast should the text visible */
+    /* we write steps 3 because we have 3 li */
+    /* this animation will make the content move upward to show different words */
+}
+
+@keyframes slide {
+    100% {
+        top: -270px;
+        /* now this will make the texts move upward */
+        /* you can see the practical experiment at code line 40 by commenting the overflow hidden */
+    }
+}
+
+.dynamic-txts li::after {
+    content: "";
+    position: absolute;
+    /* will move around the parent tag */
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #080c34;
+    border-left: 2px solid #ff4c29;
+    animation: typing 4s steps(9) infinite;
+    /* steps is used to how much your want to go like how much letter since our largest word has 9 letter so we write steps(9) */
+}
+
+@keyframes typing {
+    40%,60% {
+        left: calc(100% + 40px);
+        /* will calculate how far to go */
+    }
+
+    100% {
+        left: 0;
+        /* back to the starting position */
+    }
+}
